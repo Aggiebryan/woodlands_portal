@@ -1,0 +1,8 @@
+{
+  "name": "Woodlands Law Dashboard",
+  "description": "A highly customizable law firm home screen and productivity dashboard for link management, firm resources, and AI tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
