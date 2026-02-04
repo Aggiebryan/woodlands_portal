@@ -23,13 +23,18 @@ const Navbar: React.FC<NavbarProps> = ({ pages, activePageId, onPageChange, onAd
 
   return (
     <nav className="glass-panel sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between border-b border-white/5 shadow-2xl">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-5">
         <div className="group cursor-pointer">
-          <div className="w-11 h-11 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-2xl flex items-center justify-center font-black text-white shadow-lg shadow-yellow-900/20 group-hover:scale-105 transition-transform">W</div>
+          <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-2xl flex items-center justify-center font-black text-white shadow-lg shadow-yellow-900/20 group-hover:scale-105 transition-transform overflow-hidden p-2">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-white">
+              <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+              <path d="M12 3l10 9h-3v8h-6v-6h-2v6H5v-8H2l10-9z" fillOpacity="0.3"/>
+            </svg>
+          </div>
         </div>
         <div className="flex flex-col leading-tight">
-          <span className="font-black text-lg text-white uppercase tracking-wider">Woodlands</span>
-          <span className="text-[10px] font-bold text-yellow-600 uppercase tracking-widest opacity-80">Law Firm Dashboard</span>
+          <span className="font-black text-xl text-white uppercase tracking-tighter">The Woodlands Law Firm</span>
+          <span className="text-[10px] font-black text-yellow-600 uppercase tracking-[0.4em] opacity-80">Dashboard</span>
         </div>
       </div>
 
@@ -116,7 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ pages, activePageId, onPageChange, onAd
          >
             <div className="flex flex-col text-right">
               <span className="text-xs font-black text-gray-200 truncate max-w-[120px] uppercase tracking-wider">{user?.email?.split('@')[0]}</span>
-              <span className="text-[9px] text-yellow-600 font-bold uppercase tracking-widest opacity-70">Secured Portal</span>
+              <span className="text-[9px] text-yellow-600 font-bold uppercase tracking-widest opacity-70">Secured Node</span>
             </div>
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-700 flex items-center justify-center font-black text-sm shadow-xl border border-white/10 group-hover:scale-105 transition-transform uppercase">
               {user?.email?.[0]}
@@ -133,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ pages, activePageId, onPageChange, onAd
                onClick={async () => await supabase.auth.signOut()}
                className="w-full text-left px-4 py-2.5 text-xs font-black text-red-400 hover:bg-red-500/10 transition-colors uppercase tracking-widest"
              >
-               Terminate Session
+               Sign Out
              </button>
            </div>
          )}

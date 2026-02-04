@@ -100,7 +100,7 @@ const App: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-[#121212]">
         <div className="w-12 h-12 border-4 border-yellow-600 border-t-transparent rounded-full animate-spin"></div>
-        <span className="text-xs font-bold text-yellow-600 uppercase tracking-widest animate-pulse">Synchronizing...</span>
+        <span className="text-[10px] font-black text-yellow-600 uppercase tracking-[0.4em] animate-pulse">Syncing Secure Environment</span>
       </div>
     );
   }
@@ -146,18 +146,19 @@ const App: React.FC = () => {
         onToggleThemeEditor={() => setShowThemeEditor(!showThemeEditor)}
       />
       
-      <main className="flex-1 container mx-auto p-4 md:p-10 max-w-7xl animate-fade-in relative">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+      <main className="flex-1 container mx-auto p-4 md:p-10 max-w-[100rem] animate-fade-in relative">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
           <div>
-            <h1 className="text-4xl font-black tracking-tight flex items-center gap-3" style={{ color: theme.headingColor }}>
+            <h1 className="text-5xl font-black tracking-tighter flex items-center gap-5" style={{ color: theme.headingColor }}>
               {activePage.name}
-              {activePage.type === 'firm' && <span className="text-[10px] bg-yellow-600/20 text-yellow-500 border border-yellow-500/30 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold">Firm</span>}
+              {activePage.type === 'firm' && <span className="text-[11px] bg-yellow-600/20 text-yellow-600 border border-yellow-600/30 px-3 py-1 rounded-full uppercase tracking-[0.3em] font-black">Authorized Portal</span>}
             </h1>
-            <p className="text-gray-500 text-sm mt-1 font-medium opacity-70">Dashboard / {activePage.name}</p>
+            <p className="text-gray-600 text-[10px] mt-2 font-black uppercase tracking-[0.4em] opacity-80">The Woodlands Law Firm / Environment Control</p>
           </div>
           <button 
             onClick={() => {
-              const newWidget: Widget = { id: `widget-${Date.now()}`, title: 'New Section', layout: 'icons-grid', items: [] };
+              // Add missing required 'order' property to new widget object
+              const newWidget: Widget = { id: `widget-${Date.now()}`, title: 'New Module', layout: 'icons-grid', items: [], column: 1, order: 1 };
               updateData(prev => ({
                 ...prev,
                 pages: prev.pages.map(page => page.id === prev.activePageId ? { ...page, widgets: [...page.widgets, newWidget] } : page)
@@ -165,10 +166,10 @@ const App: React.FC = () => {
               setActiveWidget(newWidget);
               setIsEditing(true);
             }}
-            className="group relative flex items-center gap-3 bg-white/5 hover:bg-white/10 text-white px-6 py-3 rounded-2xl font-bold transition-all border border-white/10 shadow-xl overflow-hidden active:scale-95"
+            className="group relative flex items-center gap-4 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-3xl font-black text-xs uppercase tracking-[0.3em] transition-all border border-white/10 shadow-2xl overflow-hidden active:scale-95"
           >
-            <span className="text-2xl" style={{ color: theme.accentColor }}>+</span> 
-            <span>Add Section</span>
+            <span className="text-xl" style={{ color: theme.accentColor }}>+</span> 
+            <span>Create Module</span>
           </button>
         </div>
 
@@ -177,7 +178,7 @@ const App: React.FC = () => {
           theme={theme}
           onEditWidget={(w) => { setActiveWidget(w); setIsEditing(true); }}
           onDeleteWidget={(id) => {
-            if (!window.confirm("Delete this section?")) return;
+            if (!window.confirm("Terminate this module?")) return;
             updateData(prev => ({
               ...prev,
               pages: prev.pages.map(page => page.id === prev.activePageId ? { ...page, widgets: page.widgets.filter(w => w.id !== id) } : page)
@@ -209,9 +210,9 @@ const App: React.FC = () => {
         />
       )}
 
-      <footer className="py-8 text-center border-t border-white/5 mt-12 bg-black/20">
-        <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-bold">
-          The Woodlands Law Firm &bull; Internal Productivity Portal &bull; {new Date().getFullYear()}
+      <footer className="py-12 text-center border-t border-white/5 mt-20 bg-black/40">
+        <p className="text-[10px] text-gray-600 uppercase tracking-[0.5em] font-black">
+          The Woodlands Law Firm &bull; System Core &bull; EST. {new Date().getFullYear()}
         </p>
       </footer>
     </div>

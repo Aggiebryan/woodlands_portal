@@ -1,6 +1,6 @@
 
-export type WidgetLayout = 'icons-grid' | 'icons-list' | 'text-list';
-export type IconSize = 'sm' | 'md' | 'lg';
+export type WidgetLayout = 'icons-grid' | 'icons-grid-large' | 'icons-list' | 'icons-list-compact' | 'text-list';
+export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 export type PageType = 'firm' | 'personal';
 
 export interface Theme {
@@ -15,6 +15,7 @@ export interface LinkItem {
   id: string;
   title: string;
   url: string;
+  subtext?: string;
   iconUrl?: string;
   iconSize?: IconSize;
 }
@@ -27,7 +28,8 @@ export interface Widget {
   backgroundColor?: string;
   titleColor?: string;
   notes?: string;
-  columnSpan?: number; // 1, 2, 3 or 4
+  column: number; // 1, 2, 3, or 4
+  order: number;  // 1 is top, 2 below, etc.
 }
 
 export interface Page {
