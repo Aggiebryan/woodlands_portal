@@ -109,13 +109,18 @@ const Widget: React.FC<WidgetProps> = ({ widget, theme, onEdit, onDelete }) => {
         borderTopWidth: widget.backgroundColor ? '4px' : '1px'
       }}
     >
-      <div className="px-5 py-4 flex justify-between items-center bg-white/5 border-b border-white/5">
-        <h3 className="font-black text-[11px] uppercase tracking-[0.15em] truncate max-w-[70%]" style={{ color: widget.titleColor || 'rgba(156, 163, 175, 1)' }}>
+      <div className="px-5 py-4 flex justify-between items-center bg-white/10 backdrop-blur-md border-b border-white/5 relative overflow-hidden group/header">
+        {/* Glassy high-shine overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-white/5 to-transparent opacity-50 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+        
+        <h3 className="font-black text-[11px] uppercase tracking-[0.15em] truncate max-w-[70%] relative z-10" style={{ color: widget.titleColor || 'rgba(156, 163, 175, 1)' }}>
           {widget.title}
         </h3>
-        <div className="flex items-center gap-1 opacity-0 group-hover/widget:opacity-100 transition-opacity">
-          <button onClick={onEdit} className="p-1.5 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors text-xs" title="Edit Section">⚙️</button>
-          <button onClick={onDelete} className="p-1.5 hover:bg-red-500/20 rounded-lg text-gray-400 hover:text-red-400 transition-colors text-xs" title="Delete Section">🗑️</button>
+        
+        <div className="flex items-center gap-1 opacity-0 group-hover/widget:opacity-100 transition-opacity relative z-10">
+          <button onClick={onEdit} className="p-1.5 hover:bg-white/20 rounded-lg text-gray-400 hover:text-white transition-colors text-xs" title="Edit Section">⚙️</button>
+          <button onClick={onDelete} className="p-1.5 hover:bg-red-500/30 rounded-lg text-gray-400 hover:text-red-400 transition-colors text-xs" title="Delete Section">🗑️</button>
         </div>
       </div>
       
